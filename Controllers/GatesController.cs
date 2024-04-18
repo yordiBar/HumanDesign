@@ -22,7 +22,36 @@ namespace HumanDesign.Controllers
         // GET: Gates
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Gates.ToListAsync());
+            return View(await _context.Gates
+                .Include(g => g.Location)
+                .Include(g => g.Circuit)
+                .Include(g => g.Shadow)
+                .Include(g => g.Repressive)
+                .Include(g => g.Reactive)
+                .Include(g => g.Gift)
+                .Include(g => g.Siddhi).ToListAsync());
+        }
+
+        // GET: Gates/GateDetails/5
+        [HttpGet("Gates/GateDetails/{id}")]
+        public async Task<IActionResult> GateDetails(int id)
+        {
+            var gate = await _context.Gates
+                .Include(g => g.Location)
+                .Include(g => g.Circuit)
+                .Include(g => g.Shadow)
+                .Include(g => g.Repressive)
+                .Include(g => g.Reactive)
+                .Include(g => g.Gift)
+                .Include(g => g.Siddhi)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (gate == null)
+            {
+                return NotFound();
+            }
+
+            return View(gate);
         }
 
         // GET: Gates/Details/5
@@ -34,6 +63,13 @@ namespace HumanDesign.Controllers
             }
 
             var gate = await _context.Gates
+                .Include(g => g.Location)
+                .Include(g => g.Circuit)
+                .Include(g => g.Shadow)
+                .Include(g => g.Repressive)
+                .Include(g => g.Reactive)
+                .Include(g => g.Gift)
+                .Include(g => g.Siddhi)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (gate == null)
             {
@@ -46,6 +82,20 @@ namespace HumanDesign.Controllers
         // GET: Gates/Create
         public IActionResult Create()
         {
+            ViewData["LocationId"] = new SelectList(_context.Locations.ToList(), "Id", "Name");
+            ViewData["LocationIdPlaceholder"] = "Please select a Location";
+            ViewData["CircuitId"] = new SelectList(_context.Circuits.ToList(), "Id", "Name");
+            ViewData["CircuitIdPlaceholder"] = "Please select a Circuit";
+            ViewData["ShadowId"] = new SelectList(_context.Shadows.ToList(), "Id", "Name");
+            ViewData["ShadowIdPlaceholder"] = "Please select a Shadow";
+            ViewData["RepressiveId"] = new SelectList(_context.Repressives.ToList(), "Id", "Name");
+            ViewData["RepressiveIdPlaceholder"] = "Please select a Repressive";
+            ViewData["ReactiveId"] = new SelectList(_context.Reactives.ToList(), "Id", "Name");
+            ViewData["ReactiveIdPlaceholder"] = "Please select a Reactive";
+            ViewData["GiftId"] = new SelectList(_context.Gifts.ToList(), "Id", "Name");
+            ViewData["GiftIdPlaceholder"] = "Please select a Gift";
+            ViewData["SiddhiId"] = new SelectList(_context.Siddhis.ToList(), "Id", "Name");
+            ViewData["SiddhiIdPlaceholder"] = "Please select a Siddhi";
             return View();
         }
 
@@ -54,7 +104,7 @@ namespace HumanDesign.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description")] Gate gate)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,Notes,LocationId,CircuitId,SiddhiId,GiftId,ReactiveId,RepressiveId,ShadowId")] Gate gate)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +112,13 @@ namespace HumanDesign.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["LocationId"] = new SelectList(_context.Locations, "Id", "Name");
+            ViewData["CircuitId"] = new SelectList(_context.Circuits, "Id", "Name");
+            ViewData["ShadowId"] = new SelectList(_context.Shadows, "Id", "Name");
+            ViewData["RepressiveId"] = new SelectList(_context.Repressives, "Id", "Name");
+            ViewData["ReactiveId"] = new SelectList(_context.Reactives, "Id", "Name");
+            ViewData["GiftId"] = new SelectList(_context.Gifts, "Id", "Name");
+            ViewData["SiddhiId"] = new SelectList(_context.Siddhis, "Id", "Name");
             return View(gate);
         }
 
@@ -78,6 +135,13 @@ namespace HumanDesign.Controllers
             {
                 return NotFound();
             }
+            ViewData["LocationId"] = new SelectList(_context.Locations, "Id", "Name", gate.LocationId);
+            ViewData["CircuitId"] = new SelectList(_context.Circuits, "Id", "Name", gate.CircuitId);
+            ViewData["ShadowId"] = new SelectList(_context.Shadows, "Id", "Name", gate.ShadowId);
+            ViewData["RepressiveId"] = new SelectList(_context.Repressives, "Id", "Name", gate.RepressiveId);
+            ViewData["ReactiveId"] = new SelectList(_context.Reactives, "Id", "Name", gate.ReactiveId);
+            ViewData["GiftId"] = new SelectList(_context.Gifts, "Id", "Name", gate.GiftId);
+            ViewData["SiddhiId"] = new SelectList(_context.Siddhis, "Id", "Name", gate.SiddhiId);
             return View(gate);
         }
 
@@ -86,7 +150,7 @@ namespace HumanDesign.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] Gate gate)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Notes,LocationId,CircuitId,SiddhiId,GiftId,ReactiveId,RepressiveId,ShadowId")] Gate gate)
         {
             if (id != gate.Id)
             {
@@ -113,6 +177,13 @@ namespace HumanDesign.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["LocationId"] = new SelectList(_context.Locations, "Id", "Name");
+            ViewData["CircuitId"] = new SelectList(_context.Circuits, "Id", "Name");
+            ViewData["ShadowId"] = new SelectList(_context.Shadows, "Id", "Name");
+            ViewData["RepressiveId"] = new SelectList(_context.Repressives, "Id", "Name");
+            ViewData["ReactiveId"] = new SelectList(_context.Reactives, "Id", "Name");
+            ViewData["GiftId"] = new SelectList(_context.Gifts, "Id", "Name");
+            ViewData["SiddhiId"] = new SelectList(_context.Siddhis, "Id", "Name");
             return View(gate);
         }
 
@@ -125,6 +196,13 @@ namespace HumanDesign.Controllers
             }
 
             var gate = await _context.Gates
+                .Include(g => g.Location)
+                .Include(g => g.Circuit)
+                .Include(g => g.Shadow)
+                .Include(g => g.Repressive)
+                .Include(g => g.Reactive)
+                .Include(g => g.Gift)
+                .Include(g => g.Siddhi)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (gate == null)
             {
@@ -143,9 +221,8 @@ namespace HumanDesign.Controllers
             if (gate != null)
             {
                 _context.Gates.Remove(gate);
+                await _context.SaveChangesAsync();
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

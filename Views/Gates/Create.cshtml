@@ -23,6 +23,60 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocationId" class="control-label">Location</label>
+                <select asp-for="LocationId" class="form-control" asp-items="ViewBag.LocationId">
+                    <option value="">@ViewData["LocationIdPlaceholder"]</option>
+                </select>
+                <span asp-validation-for="LocationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CircuitId" class="control-label">Circuit</label>
+                <select asp-for="CircuitId" class="form-control" asp-items="ViewBag.CircuitId">
+                    <option value="">@ViewData["CircuitIdPlaceholder"]</option>
+                </select>
+                <span asp-validation-for="CircuitId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShadowId" class="control-label">Shadow</label>
+                <select asp-for="ShadowId" class="form-control" asp-items="ViewBag.ShadowId">
+                    <option value="">@ViewData["ShadowIdPlaceholder"]</option>
+                </select>
+                <span asp-validation-for="ShadowId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RepressiveId" class="control-label">Repressive</label>
+                <select asp-for="RepressiveId" class="form-control" asp-items="ViewBag.RepressiveId">
+                    <option value="">@ViewData["RepressiveIdPlaceholder"]</option>
+                </select>
+                <span asp-validation-for="RepressiveId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReactiveId" class="control-label">Reactive</label>
+                <select asp-for="ReactiveId" class="form-control" asp-items="ViewBag.ReactiveId">
+                    <option value="">@ViewData["ReactiveIdPlaceholder"]</option>
+                </select>
+                <span asp-validation-for="ReactiveId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GiftId" class="control-label">Gift</label>
+                <select asp-for="GiftId" class="form-control" asp-items="ViewBag.GiftId">
+                    <option value="">@ViewData["GiftIdPlaceholder"]</option>
+                </select>
+                <span asp-validation-for="GiftId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiddhiId" class="control-label">Siddhi</label>
+                <select asp-for="SiddhiId" class="form-control" asp-items="ViewBag.SiddhiId">
+                    <option value="">@ViewData["SiddhiIdPlaceholder"]</option>
+                </select>
+                <span asp-validation-for="SiddhiId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

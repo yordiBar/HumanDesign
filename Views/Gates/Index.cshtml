@@ -4,38 +4,74 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Gates</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+@if (Model.Any())
+{
+    <table class="table" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th style ="border-right: 1px solid #ddd;">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th style="border-right: 1px solid #ddd;">
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th style="border-right: 1px solid #ddd;">
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th style="border-right: 1px solid #ddd;">
+                    @Html.DisplayNameFor(model => model.Circuit)
+                </th>
+                <th style="border-right: 1px solid #ddd;">
+                    @Html.DisplayNameFor(model => model.Shadow)
+                </th>
+                <th style="border-right: 1px solid #ddd;">
+                    @Html.DisplayNameFor(model => model.Repressive)
+                </th>
+                <th style="border-right: 1px solid #ddd;">
+                    @Html.DisplayNameFor(model => model.Reactive)
+                </th>
+                <th style="border-right: 1px solid #ddd;">
+                    @Html.DisplayNameFor(model => model.Gift)
+                </th>
+                <th style="border-right: 1px solid #ddd;">
+                    @Html.DisplayNameFor(model => model.Siddhi)
+                </th>
+                <th style="border-right: 1px solid #ddd;">
+                    @Html.DisplayNameFor(model => model.Notes)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="border-right: 1px solid #ddd;">@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td style="border-right: 1px solid #ddd;">@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td style="border-right: 1px solid #ddd;">@Html.DisplayFor(modelItem => item.Location.Name)</td>
+                    <td style="border-right: 1px solid #ddd;">@Html.DisplayFor(modelItem => item.Circuit.Name)</td>
+                    <td style="border-right: 1px solid #ddd;">@Html.DisplayFor(modelItem => item.Shadow.Name)</td>
+                    <td style="border-right: 1px solid #ddd;">@Html.DisplayFor(modelItem => item.Repressive.Name)</td>
+                    <td style="border-right: 1px solid #ddd;">@Html.DisplayFor(modelItem => item.Reactive.Name)</td>
+                    <td style="border-right: 1px solid #ddd;">@Html.DisplayFor(modelItem => item.Gift.Name)</td>
+                    <td style="border-right: 1px solid #ddd;">@Html.DisplayFor(modelItem => item.Siddhi.Name)</td>
+                    <td style="border-right: 1px solid #ddd;">@Html.DisplayFor(modelItem => item.Notes)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
-    </tbody>
-</table>
+else
+{
+    <p>No gates available.</p>
+}
+

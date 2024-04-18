@@ -22,19 +22,50 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Gates
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item text-dark" asp-controller="Gates" asp-action="Index">List</a>
-                                <a class="dropdown-item text-dark" asp-controller="Gates" asp-action="Create">Create</a>
-                            </div>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <!-- Direct link to All Gates -->
+                                <li>
+                                    <a class="dropdown-item text-dark" asp-controller="Gates" asp-action="Index">All Gates</a>
+                                </li>
+                                <!-- Dropdown items for gate groups -->
+                                @for (int i = 1; i <= 60; i += 10)
+                                {
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item text-dark dropdown-toggle" href="#">
+                                            Gates @i-@Math.Min(i + 9, 60)
+                                        </a>
+                                        <!-- Submenu for individual gates -->
+                                        <ul class="dropdown-menu">
+                                            @for (int j = i; j < i + 10 && j <= 60; j++)
+                                            {
+                                                <!-- Dynamic link to a single gate details action -->
+                                                <li>
+                                                    <a class="dropdown-item text-dark" asp-controller="Gates" asp-action="GateDetails" asp-route-id="@j">Gate @j</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            </ul>
                         </li>
-
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Gate Properties
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item text-dark" asp-controller="Locations" asp-action="Index">Location</a>
+                                <a class="dropdown-item text-dark" asp-controller="Circuits" asp-action="Index">Circuit</a>
+                                <a class="dropdown-item text-dark" asp-controller="Shadows" asp-action="Index">Shadow</a>
+                                <a class="dropdown-item text-dark" asp-controller="Repressives" asp-action="Index">Repressive</a>
+                                <a class="dropdown-item text-dark" asp-controller="Reactives" asp-action="Index">Reactive</a>
+                                <a class="dropdown-item text-dark" asp-controller="Gifts" asp-action="Index">Gift</a>
+                                <a class="dropdown-item text-dark" asp-controller="Siddhis" asp-action="Index">Siddhi</a>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -54,6 +85,42 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const submenuToggles = document.querySelectorAll('.dropdown-submenu > a');
+
+            submenuToggles.forEach(toggle => {
+                toggle.addEventListener('click', function (e) {
+                    e.preventDefault(); // Prevent default anchor click behavior
+                    e.stopPropagation(); // Stop the event from bubbling up
+
+                    let currentSubmenu = this.nextElementSibling;
+                    if (currentSubmenu.classList.contains('show')) {
+                        currentSubmenu.classList.remove('show');
+                    } else {
+                        // Close other open submenus in the same dropdown
+                        const openSubmenus = this.closest('.dropdown-menu').querySelectorAll('.dropdown-menu.show');
+                        openSubmenus.forEach(submenu => {
+                            submenu.classList.remove('show');
+                        });
+                        // Show the current submenu
+                        currentSubmenu.classList.add('show');
+                    }
+                });
+            });
+
+            // Close submenus when clicking outside
+            document.body.addEventListener('click', function (e) {
+                const openSubmenus = document.querySelectorAll('.dropdown-submenu .dropdown-menu.show');
+                openSubmenus.forEach(submenu => {
+                    if (!submenu.contains(e.target)) {
+                        submenu.classList.remove('show');
+                    }
+                });
+            });
+        });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -14,14 +14,54 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">Gate Name</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
+                <label asp-for="Description" class="control-label">Description</label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label">Notes</label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocationId" class="control-label">Location</label>
+                <select asp-for="LocationId" class="form-control" asp-items="ViewBag.LocationId"></select>
+                <span asp-validation-for="LocationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CircuitId" class="control-label">Circuit</label>
+                <select asp-for="CircuitId" class="form-control" asp-items="ViewBag.CircuitId"></select>
+                <span asp-validation-for="CircuitId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShadowId" class="control-label">Shadow</label>
+                <select asp-for="ShadowId" class="form-control" asp-items="ViewBag.ShadowId"></select>
+                <span asp-validation-for="ShadowId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RepressiveId" class="control-label">Repressive</label>
+                <select asp-for="RepressiveId" class="form-control" asp-items="ViewBag.RepressiveId"></select>
+                <span asp-validation-for="RepressiveId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReactiveId" class="control-label">Reactive</label>
+                <select asp-for="ReactiveId" class="form-control" asp-items="ViewBag.ReactiveId"></select>
+                <span asp-validation-for="ReactiveId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GiftId" class="control-label">Gift</label>
+                <select asp-for="GiftId" class="form-control" asp-items="ViewBag.GiftId"></select>
+                <span asp-validation-for="GiftId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiddhiId" class="control-label">Siddhi</label>
+                <select asp-for="SiddhiId" class="form-control" asp-items="ViewBag.SiddhiId"></select>
+                <span asp-validation-for="SiddhiId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

@@ -1,0 +1,87 @@
+﻿@model HumanDesign.Models.Gate
+
+@{
+    ViewData["Title"] = "Gate Details";
+}
+
+<h1>Gate Details</h1>
+
+@if (Model != null)
+{
+    <div>
+        <h4>Gate</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                Gate Name
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class="col-sm-2">
+                Location
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Location.Name)
+            </dd>
+            <dt class="col-sm-2">
+                Circuit
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Circuit.Name)
+            </dd>
+            <dt class="col-sm-2">
+                Shadow
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Shadow.Name)
+            </dd>
+            <dt class="col-sm-2">
+                Repressive
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Repressive.Name)
+            </dd>
+            <dt class="col-sm-2">
+                Reactive
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Reactive.Name)
+            </dd>
+            <dt class="col-sm-2">
+                Gift
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Gift.Name)
+            </dd>
+            <dt class="col-sm-2">
+                Siddhi
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Siddhi.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Notes)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Notes)
+            </dd>            
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+}
+else
+{
+    <div>
+        <p>Gate not found.</p>
+    </div>
+}
