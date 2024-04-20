@@ -1,0 +1,54 @@
+﻿@model HumanDesign.Models.Center
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Center</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KeyNote)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KeyNote)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Defined)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Defined)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Undefined)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Undefined)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipsDefined)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipsDefined)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipsUndefined)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipsUndefined)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

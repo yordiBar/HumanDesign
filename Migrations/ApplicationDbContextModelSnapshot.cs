@@ -22,6 +22,109 @@ namespace HumanDesign.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("HumanDesign.Models.Archetype", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Characteristics")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Lines")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Archetype");
+                });
+
+            modelBuilder.Entity("HumanDesign.Models.Authority", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Who")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Authority");
+                });
+
+            modelBuilder.Entity("HumanDesign.Models.Center", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Defined")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("KeyNote")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TipsDefined")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TipsUndefined")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Undefined")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Center");
+                });
+
+            modelBuilder.Entity("HumanDesign.Models.Channel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Channels");
+                });
+
             modelBuilder.Entity("HumanDesign.Models.Circuit", b =>
                 {
                     b.Property<int>("Id")
@@ -36,9 +139,52 @@ namespace HumanDesign.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Theme")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Circuits");
+                });
+
+            modelBuilder.Entity("HumanDesign.Models.CircuitChannel", b =>
+                {
+                    b.Property<int>("CircuitId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ChannelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CircuitId", "ChannelId");
+
+                    b.HasIndex("ChannelId");
+
+                    b.ToTable("CircuitChannels");
+                });
+
+            modelBuilder.Entity("HumanDesign.Models.EnergyType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EnergyType");
                 });
 
             modelBuilder.Entity("HumanDesign.Models.Gate", b =>
@@ -136,6 +282,34 @@ namespace HumanDesign.Migrations
                     b.ToTable("Locations");
                 });
 
+            modelBuilder.Entity("HumanDesign.Models.ProfileLine", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LineNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProfileLine");
+                });
+
             modelBuilder.Entity("HumanDesign.Models.Reactive", b =>
                 {
                     b.Property<int>("Id")
@@ -212,6 +386,25 @@ namespace HumanDesign.Migrations
                     b.ToTable("Siddhis");
                 });
 
+            modelBuilder.Entity("HumanDesign.Models.CircuitChannel", b =>
+                {
+                    b.HasOne("HumanDesign.Models.Channel", "Channel")
+                        .WithMany("CircuitChannels")
+                        .HasForeignKey("ChannelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HumanDesign.Models.Circuit", "Circuit")
+                        .WithMany("CircuitChannels")
+                        .HasForeignKey("CircuitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Channel");
+
+                    b.Navigation("Circuit");
+                });
+
             modelBuilder.Entity("HumanDesign.Models.Gate", b =>
                 {
                     b.HasOne("HumanDesign.Models.Circuit", "Circuit")
@@ -255,6 +448,16 @@ namespace HumanDesign.Migrations
                     b.Navigation("Shadow");
 
                     b.Navigation("Siddhi");
+                });
+
+            modelBuilder.Entity("HumanDesign.Models.Channel", b =>
+                {
+                    b.Navigation("CircuitChannels");
+                });
+
+            modelBuilder.Entity("HumanDesign.Models.Circuit", b =>
+                {
+                    b.Navigation("CircuitChannels");
                 });
 #pragma warning restore 612, 618
         }

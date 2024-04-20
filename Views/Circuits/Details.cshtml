@@ -1,7 +1,7 @@
 ﻿@model HumanDesign.Models.Circuit
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Details of " + Model.Name;
 }
 
 <h1>Details</h1>
@@ -10,21 +10,27 @@
     <h4>Circuit</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Note)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt class="col-sm-2">
+            Channels
+        </dt>
+        <dd class="col-sm-10">
+            @string.Join(", ", Model.CircuitChannels.Select(cc => cc.Channel.Name))
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> | <!-- Removed optional chaining as Model should not be null in details view -->
     <a asp-action="Index">Back to List</a>
 </div>
