@@ -6,31 +6,64 @@
 
 <h1>Details</h1>
 
-<div>
-    <h4>Circuit</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Note)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Note)
-        </dd>
-        <dt class="col-sm-2">
-            Channels
-        </dt>
-        <dd class="col-sm-10">
-            @string.Join(", ", Model.CircuitChannels.Select(cc => cc.Channel.Name))
-        </dd>
-    </dl>
+@if (Model != null)
+{
+    <style>
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+            .details-table th, .details-table td {
+                border: 1px solid #dee2e6;
+                padding: 0.75rem;
+                vertical-align: top;
+                line-height: 1.6;
+                text-align: left;
+            }
+
+            .details-table th {
+                width: 20%;
+                background-color: #f8f9fa;
+                font-weight: bold;
+            }
+    </style>
+
     <div>
-        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success">Edit</a>
-        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        <h4>Circuit</h4>
+        <hr />
+        <table class="table details-table">
+            <thead>
+                <tr>
+                    <th scope="col">Feature</th>
+                    <th scope="col">Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Name)</td>
+                    <td>@Html.DisplayFor(model => model.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Note)</td>
+                    <td>@Html.DisplayFor(model => model.Note)</td>
+                </tr>
+                <tr>
+                    <td>Channels</td>
+                    <td>@string.Join(", ", Model.CircuitChannels.Select(cc => cc.Channel.Name))</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
     </div>
-</div>
+}
+else
+{
+    <div>
+        <p>Circuit not found.</p>
+    </div>
+}

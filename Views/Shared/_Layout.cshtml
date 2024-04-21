@@ -33,7 +33,7 @@
                                     <a class="dropdown-item text-dark" asp-controller="Gates" asp-action="Index">All Gates</a>
                                 </li>
                                 <!-- Dropdown items for gate groups -->
-                                @for (int i = 1; i <= 60; i += 10)
+                                @for (int i = 1; i <= 64; i += 10)
                                 {
                                     <li class="dropdown-submenu">
                                         <a class="dropdown-item text-dark dropdown-toggle" href="#">
@@ -41,7 +41,7 @@
                                         </a>
                                         <!-- Submenu for individual gates -->
                                         <ul class="dropdown-menu">
-                                            @for (int j = i; j < i + 10 && j <= 60; j++)
+                                            @for (int j = i; j < i + 10 && j <= 64; j++)
                                             {
                                                 <!-- Dynamic link to a single gate details action -->
                                                 <li>

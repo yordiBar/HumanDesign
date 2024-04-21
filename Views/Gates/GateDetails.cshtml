@@ -8,75 +8,69 @@
 
 @if (Model != null)
 {
+    <style>
+        .details-table th, .details-table td {
+            border-right: 1px solid #dee2e6; /* Color of the vertical line */
+        }
+
+            .details-table th:last-child, .details-table td:last-child {
+                border-right: none; /* Prevents a border on the last column */
+            }
+    </style>
+
+    <table class="table details-table">
+        <thead>
+            <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Gate Name</td>
+                <td>@Html.DisplayFor(model => model.Name)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Description)</td>
+                <td>@Html.DisplayFor(model => model.Description)</td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>@Html.DisplayFor(model => model.Location.Name)</td>
+            </tr>
+            <tr>
+                <td>Circuit</td>
+                <td>@Html.DisplayFor(model => model.Circuit.Name)</td>
+            </tr>
+            <tr>
+                <td>Shadow</td>
+                <td>@Html.DisplayFor(model => model.Shadow.Name)</td>
+            </tr>
+            <tr>
+                <td>Repressive</td>
+                <td>@Html.DisplayFor(model => model.Repressive.Name)</td>
+            </tr>
+            <tr>
+                <td>Reactive</td>
+                <td>@Html.DisplayFor(model => model.Reactive.Name)</td>
+            </tr>
+            <tr>
+                <td>Gift</td>
+                <td>@Html.DisplayFor(model => model.Gift.Name)</td>
+            </tr>
+            <tr>
+                <td>Siddhi</td>
+                <td>@Html.DisplayFor(model => model.Siddhi.Name)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Notes)</td>
+                <td>@Html.DisplayFor(model => model.Notes)</td>
+            </tr>
+        </tbody>
+    </table>
     <div>
-        <h4>Gate</h4>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                Gate Name
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-            <dt class="col-sm-2">
-                Location
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Location.Name)
-            </dd>
-            <dt class="col-sm-2">
-                Circuit
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Circuit.Name)
-            </dd>
-            <dt class="col-sm-2">
-                Shadow
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Shadow.Name)
-            </dd>
-            <dt class="col-sm-2">
-                Repressive
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Repressive.Name)
-            </dd>
-            <dt class="col-sm-2">
-                Reactive
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Reactive.Name)
-            </dd>
-            <dt class="col-sm-2">
-                Gift
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Gift.Name)
-            </dd>
-            <dt class="col-sm-2">
-                Siddhi
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Siddhi.Name)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Notes)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Notes)
-            </dd>            
-        </dl>
-        <div>
-            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success">Edit</a>
-            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-        </div>
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
     </div>
 }
 else
