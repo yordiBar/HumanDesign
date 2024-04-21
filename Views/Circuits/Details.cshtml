@@ -29,8 +29,8 @@
             @string.Join(", ", Model.CircuitChannels.Select(cc => cc.Channel.Name))
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> | <!-- Removed optional chaining as Model should not be null in details view -->
-    <a asp-action="Index">Back to List</a>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
 </div>

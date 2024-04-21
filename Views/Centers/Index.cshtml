@@ -7,27 +7,27 @@
 <h2>List of all Centers</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th style="border-right: 1px solid #ddd;">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
+            <th style="border-right: 1px solid #ddd;">
                 @Html.DisplayNameFor(model => model.KeyNote)
             </th>
-            <th>
+            <th style="border-right: 1px solid #ddd;">
                 @Html.DisplayNameFor(model => model.Defined)
             </th>
-            <th>
+            <th style="border-right: 1px solid #ddd;">
                 @Html.DisplayNameFor(model => model.Undefined)
             </th>
-            <th>
+            <th style="border-right: 1px solid #ddd;">
                 @Html.DisplayNameFor(model => model.TipsDefined)
             </th>
-            <th>
+            <th style="border-right: 1px solid #ddd;">
                 @Html.DisplayNameFor(model => model.TipsUndefined)
             </th>
             <th></th>
@@ -36,29 +36,37 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            <td style="border-right: 1px solid #ddd;">
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
+            <td style="border-right: 1px solid #ddd;">
                 @Html.DisplayFor(modelItem => item.KeyNote)
             </td>
-            <td>
+            <td style="border-right: 1px solid #ddd;">
                 @Html.DisplayFor(modelItem => item.Defined)
             </td>
-            <td>
+            <td style="border-right: 1px solid #ddd;">
                 @Html.DisplayFor(modelItem => item.Undefined)
             </td>
-            <td>
+            <td style="border-right: 1px solid #ddd;">
                 @Html.DisplayFor(modelItem => item.TipsDefined)
             </td>
-            <td>
+            <td style="border-right: 1px solid #ddd;">
                 @Html.DisplayFor(modelItem => item.TipsUndefined)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="form-group me-2">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a>
+                        </div>
+                        <div class="form-group me-2">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Details</a>
+                        </div>
+                        <div class="form-group">
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </td>
         </tr>
 }
     </tbody>

@@ -1,0 +1,11 @@
+﻿@using Microsoft.AspNetCore.Mvc.ViewFeatures
+
+@functions {
+    public static bool IsActive(ViewContext viewContext, string controller, string action)
+    {
+        var currentAction = (string)viewContext.RouteData.Values["action"];
+        var currentController = (string)viewContext.RouteData.Values["controller"];
+        return string.Equals(currentAction, action, StringComparison.OrdinalIgnoreCase) &&
+               string.Equals(currentController, controller, StringComparison.OrdinalIgnoreCase);
+    }
+}
