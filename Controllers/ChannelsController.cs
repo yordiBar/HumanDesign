@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using HumanDesign.Data;
+using HumanDesign.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using HumanDesign.Data;
-using HumanDesign.Models;
 
 namespace HumanDesign.Controllers
 {
@@ -22,7 +18,9 @@ namespace HumanDesign.Controllers
         // GET: Channels
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Channels.ToListAsync());
+            return View(await _context.Channels
+                .Include(g => g.Circuit)
+                .ToListAsync());
         }
 
         // GET: Channels/Details/5
@@ -34,6 +32,7 @@ namespace HumanDesign.Controllers
             }
 
             var channel = await _context.Channels
+                .Include(g => g.Circuit)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (channel == null)
             {
@@ -46,15 +45,14 @@ namespace HumanDesign.Controllers
         // GET: Channels/Create
         public IActionResult Create()
         {
+            ViewData["CircuitId"] = new SelectList(_context.Circuits.ToList(), "Id", "Name");
+            ViewData["CircuitIdPlaceholder"] = "Please select a Circuit";
             return View();
         }
 
-        // POST: Channels/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Channel channel)
+        public async Task<IActionResult> Create([Bind("Id,Number,Name,Location,CircuitId,Description,Theme,Note")] Channel channel)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +60,7 @@ namespace HumanDesign.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CircuitId"] = new SelectList(_context.Circuits, "Id", "Name");
             return View(channel);
         }
 
@@ -78,15 +77,13 @@ namespace HumanDesign.Controllers
             {
                 return NotFound();
             }
+            ViewData["CircuitId"] = new SelectList(_context.Circuits, "Id", "Name", channel.CircuitId);
             return View(channel);
         }
 
-        // POST: Channels/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Channel channel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Number,Name,Location,CircuitId,Description,Theme,Note")] Channel channel)
         {
             if (id != channel.Id)
             {
@@ -113,6 +110,7 @@ namespace HumanDesign.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CircuitId"] = new SelectList(_context.Circuits, "Id", "Name");
             return View(channel);
         }
 
@@ -125,6 +123,7 @@ namespace HumanDesign.Controllers
             }
 
             var channel = await _context.Channels
+                .Include(g => g.Circuit)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (channel == null)
             {
@@ -153,5 +152,41 @@ namespace HumanDesign.Controllers
         {
             return _context.Channels.Any(e => e.Id == id);
         }
+
+        #region Channel Details
+        public async Task<IActionResult> Ch18(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var channel = await _context.Channels
+                .Include(g => g.Circuit)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (channel == null)
+            {
+                return NotFound();
+            }
+
+            return View(channel);
+        }
+
+        [HttpGet("Channels/ChannelDetails/{id}")]
+        public async Task<IActionResult> ChannelDetails(int id)
+        {
+            var channel = await _context.Channels
+                .Include(g => g.Circuit)  // Include additional navigation properties if needed
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (channel == null)
+            {
+                return NotFound();
+            }
+
+            return View(channel);
+        }
+
+        #endregion
     }
 }

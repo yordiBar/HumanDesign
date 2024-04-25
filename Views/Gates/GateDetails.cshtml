@@ -9,12 +9,24 @@
 @if (Model != null)
 {
     <style>
-        .details-table th, .details-table td {
-            border-right: 1px solid #dee2e6; /* Color of the vertical line */
+        .details-table {
+            width: 100%;
+            border-collapse: collapse; /* Ensures borders between rows and columns touch */
+            table-layout: fixed; /* Helps to keep columns width consistent */
         }
 
-            .details-table th:last-child, .details-table td:last-child {
-                border-right: none; /* Prevents a border on the last column */
+            .details-table th, .details-table td {
+                border: 1px solid #dee2e6; /* Adds borders to cells */
+                padding: 0.75rem; /* Adds some padding for text inside cells */
+                vertical-align: top; /* Aligns content to the top of the cell */
+                line-height: 1.6; /* Adjusts the line height to match the 'Gate' table */
+                text-align: left; /* Aligns text to the left */
+            }
+
+            .details-table th {
+                width: 20%; /* Sets the width of the 'Features' column to match the 'Gate' table */
+                background-color: #f8f9fa; /* Matches the background color from the 'Gate' table */
+                font-weight: bold; /* Makes the 'Features' header bold */
             }
     </style>
 
@@ -73,9 +85,9 @@
         <a asp-action="Index" class="btn btn-secondary">Back to List</a>
     </div>
 }
-else
-{
-    <div>
-        <p>Gate not found.</p>
-    </div>
-}
+    else
+    {
+        <div>
+            <p>Gate not found.</p>
+        </div>
+    }

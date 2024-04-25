@@ -35,10 +35,33 @@
     <table class="table details-table">
         <tbody>
             <tr>
-                <td>Name</td>
+                <td>Channel Number</td>
+                <td>@Html.DisplayFor(model => model.Number)</td>
+            </tr>
+            <tr>
+                <td>Channel Name</td>
                 <td>@Html.DisplayFor(model => model.Name)</td>
             </tr>
-            <!-- Add more rows here for additional attributes if needed -->
+            <tr>
+                <td>Location</td>
+                <td>@Html.DisplayFor(model => model.Location)</td>
+            </tr>
+            <tr>
+                <td>Circuit</td>
+                <td>@Html.DisplayFor(model => model.Circuit.Name)</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>@Html.DisplayFor(model => model.Description)</td>
+            </tr>
+            <tr>
+                <td>Energetic Theme</td>
+                <td>@Html.DisplayFor(model => model.Theme)</td>
+            </tr>
+            <tr>
+                <td>Note</td>
+                <td>@Html.DisplayFor(model => model.Note)</td>
+            </tr>
         </tbody>
     </table>
     <form asp-action="Delete" method="post">

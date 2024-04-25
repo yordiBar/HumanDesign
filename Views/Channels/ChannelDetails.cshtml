@@ -1,10 +1,10 @@
 ﻿@model HumanDesign.Models.Channel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Ch18";
 }
 
-<h1>Details</h1>
+<h1>Channel Details</h1>
 
 @if (Model != null)
 {
@@ -29,10 +29,6 @@
                 font-weight: bold; /* Makes the 'Features' header bold */
             }
     </style>
-
-    <div>
-        <h4>Channel</h4>
-        <hr />
         <table class="table details-table">
             <thead>
                 <tr>
@@ -50,11 +46,11 @@
                     <td>@Html.DisplayFor(model => model.Name)</td>
                 </tr>
                 <tr>
-                    <td>@Html.DisplayNameFor(model => model.Location)</td>
+                    <td>Locations</td>
                     <td>@Html.DisplayFor(model => model.Location)</td>
                 </tr>
                 <tr>
-                    <td>Circuit</td>
+                <td>Circuit</td>
                     <td>@Html.DisplayFor(model => model.Circuit.Name)</td>
                 </tr>
                 <tr>
@@ -62,24 +58,24 @@
                     <td>@Html.DisplayFor(model => model.Description)</td>
                 </tr>
                 <tr>
-                    <td>@Html.DisplayNameFor(model => model.Theme)</td>
+                    <td>Energetic Themes</td>
                     <td>@Html.DisplayFor(model => model.Theme)</td>
                 </tr>
                 <tr>
                     <td>@Html.DisplayNameFor(model => model.Note)</td>
                     <td>@Html.DisplayFor(model => model.Note)</td>
                 </tr>
-            </tbody>
-        </table>
-        <div>
-            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success">Edit</a>
-            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-        </div>
+                </tbody>
+                </table>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
     </div>
 }
 else
 {
     <div>
-        <p>Channel not found.</p>
+        <p>Gate not found.</p>
     </div>
 }
+
