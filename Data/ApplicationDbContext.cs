@@ -25,6 +25,7 @@ namespace HumanDesign.Data
         public DbSet<Channel> Channels { get; set; }
         public DbSet<CircuitChannel> CircuitChannels { get; set; }
         public DbSet<Planet> Planets { get; set; }
+        public DbSet<IncarnationCross> IncarnationCrosses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

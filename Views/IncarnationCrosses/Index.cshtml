@@ -1,10 +1,10 @@
-﻿@model IEnumerable<HumanDesign.Models.Planet>
+﻿@model IEnumerable<HumanDesign.Models.IncarnationCross>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>List of all Planets</h1>
+<h1>List of all Incarnation Crosses</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-success">Create New</a>
@@ -13,25 +13,13 @@
     <thead>
         <tr>
             <th style="border-right: 1px solid #ddd;">
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th style="border-right: 1px solid #ddd;">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th style="border-right: 1px solid #ddd;">
                 @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th style="border-right: 1px solid #ddd;">
-                Main Theme
-            </th>
-            <th style="border-right: 1px solid #ddd;">
-                @Html.DisplayNameFor(model => model.Concious)
-            </th>
-            <th style="border-right: 1px solid #ddd;">
-                @Html.DisplayNameFor(model => model.Unconcious)
-            </th>
-            <th style="border-right: 1px solid #ddd;">
-                Pearl Sequence
-            </th>
-            <th style="border-right: 1px solid #ddd;">
-                Role in Pearl Sequence
             </th>
             <th style="border-right: 1px solid #ddd;">
                 @Html.DisplayNameFor(model => model.Note)
@@ -43,25 +31,13 @@
 @foreach (var item in Model) {
         <tr>
                 <td style="border-right: 1px solid #ddd;">
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+                <td style="border-right: 1px solid #ddd;">
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
                 <td style="border-right: 1px solid #ddd;">
                 @Html.DisplayFor(modelItem => item.Description)
-            </td>
-                <td style="border-right: 1px solid #ddd;">
-                @Html.DisplayFor(modelItem => item.MainTheme)
-            </td>
-                <td style="border-right: 1px solid #ddd;">
-                @Html.DisplayFor(modelItem => item.Concious)
-            </td>
-                <td style="border-right: 1px solid #ddd;">
-                @Html.DisplayFor(modelItem => item.Unconcious)
-            </td>
-                <td style="border-right: 1px solid #ddd;">
-                @Html.DisplayFor(modelItem => item.PearlSequence)
-            </td>
-                <td style="border-right: 1px solid #ddd;">
-                @Html.DisplayFor(modelItem => item.RoleInPearlSequence)
             </td>
                 <td style="border-right: 1px solid #ddd;">
                 @Html.DisplayFor(modelItem => item.Note)

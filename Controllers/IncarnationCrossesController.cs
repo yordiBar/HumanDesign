@@ -5,22 +5,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanDesign.Controllers
 {
-    public class PlanetsController : Controller
+    public class IncarnationCrossesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public PlanetsController(ApplicationDbContext context)
+        public IncarnationCrossesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Planets
+        // GET: IncarnationCrosses
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Planets.ToListAsync());
+            return View(await _context.IncarnationCrosses.ToListAsync());
         }
 
-        // GET: Planets/Details/5
+        // GET: IncarnationCrosses/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -28,39 +28,39 @@ namespace HumanDesign.Controllers
                 return NotFound();
             }
 
-            var planet = await _context.Planets
+            var incarnationCross = await _context.IncarnationCrosses
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (planet == null)
+            if (incarnationCross == null)
             {
                 return NotFound();
             }
 
-            return View(planet);
+            return View(incarnationCross);
         }
 
-        // GET: Planets/Create
+        // GET: IncarnationCrosses/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Planets/Create
+        // POST: IncarnationCrosses/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,MainTheme,Concious,Unconcious,PearlSequence,RoleInPearlSequence,Note")] Planet planet)
+        public async Task<IActionResult> Create([Bind("Id,Number,Name,Description,Note")] IncarnationCross incarnationCross)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(planet);
+                _context.Add(incarnationCross);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(planet);
+            return View(incarnationCross);
         }
 
-        // GET: Planets/Edit/5
+        // GET: IncarnationCrosses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -68,22 +68,22 @@ namespace HumanDesign.Controllers
                 return NotFound();
             }
 
-            var planet = await _context.Planets.FindAsync(id);
-            if (planet == null)
+            var incarnationCross = await _context.IncarnationCrosses.FindAsync(id);
+            if (incarnationCross == null)
             {
                 return NotFound();
             }
-            return View(planet);
+            return View(incarnationCross);
         }
 
-        // POST: Planets/Edit/5
+        // POST: IncarnationCrosses/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,MainTheme,Concious,Unconcious,PearlSequence,RoleInPearlSequence,Note")] Planet planet)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Number,Name,Description,Note")] IncarnationCross incarnationCross)
         {
-            if (id != planet.Id)
+            if (id != incarnationCross.Id)
             {
                 return NotFound();
             }
@@ -92,12 +92,12 @@ namespace HumanDesign.Controllers
             {
                 try
                 {
-                    _context.Update(planet);
+                    _context.Update(incarnationCross);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PlanetExists(planet.Id))
+                    if (!IncarnationCrossExists(incarnationCross.Id))
                     {
                         return NotFound();
                     }
@@ -108,10 +108,10 @@ namespace HumanDesign.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(planet);
+            return View(incarnationCross);
         }
 
-        // GET: Planets/Delete/5
+        // GET: IncarnationCrosses/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -119,34 +119,34 @@ namespace HumanDesign.Controllers
                 return NotFound();
             }
 
-            var planet = await _context.Planets
+            var incarnationCross = await _context.IncarnationCrosses
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (planet == null)
+            if (incarnationCross == null)
             {
                 return NotFound();
             }
 
-            return View(planet);
+            return View(incarnationCross);
         }
 
-        // POST: Planets/Delete/5
+        // POST: IncarnationCrosses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var planet = await _context.Planets.FindAsync(id);
-            if (planet != null)
+            var incarnationCross = await _context.IncarnationCrosses.FindAsync(id);
+            if (incarnationCross != null)
             {
-                _context.Planets.Remove(planet);
+                _context.IncarnationCrosses.Remove(incarnationCross);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PlanetExists(int id)
+        private bool IncarnationCrossExists(int id)
         {
-            return _context.Planets.Any(e => e.Id == id);
+            return _context.IncarnationCrosses.Any(e => e.Id == id);
         }
     }
 }
