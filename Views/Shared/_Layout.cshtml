@@ -82,51 +82,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark @(IsActive("Home", "Index") ? "active" : "")" asp-area="" asp-controller="Archetypes" asp-action="Index">Archetype</a>
                         </li>
-@*                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="channelsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Channels
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="channelsDropdown">
-                                <!-- Replace these with the appropriate channel names and IDs -->
-                                <li><a class="nav-link text-dark @(IsActive("Home", "Index") ? "active" : "")" asp-area="" asp-controller="Channels" asp-action="Index">All Channels</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="1">Channel 1-8</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="2">Channel 2-14</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="3">Channel 3-60</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="4">Channel 4-63</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="5">Channel 5-15</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="6">Channel 6-59</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="7">Channel 7-31</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="8">Channel 9-52</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="9">Channel 10-20</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="10">Channel 10-34</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="11">Channel 10-57</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="12">Channel 11-56</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="13">Channel 12-22</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="14">Channel 13-33</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="15">Channel 16-48</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="16">Channel 17-62</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="17">Channel 18-58</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="18">Channel 19-49</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="19">Channel 20-34</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="20">Channel 20-57</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="21">Channel 21-45</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="22">Channel 23-43</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="23">Channel 24-61</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="24">Channel 25-51</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="25">Channel 26-44</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="26">Channel 27-50</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="27">Channel 28-38</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="28">Channel 29-46</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="29">Channel 30-41</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="30">Channel 32-54</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="31">Channel 34-57</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="32">Channel 35-36</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="33">Channel 37-40</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="34">Channel 39-55</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="35">Channel 42-53</a></li>
-                                <li><a class="dropdown-item text-dark" asp-controller="Channels" asp-action="ChannelDetails" asp-route-id="36">Channel 47-64</a></li>
-                            </ul>
-                        </li> *@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-dark" href="#" id="channelsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Channels
@@ -148,7 +103,9 @@
                                 }
                             </ul>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(IsActive("Home", "Index") ? "active" : "")" asp-area="" asp-controller="Planets" asp-action="Index">Planets</a>
+                        </li>
                     </ul>
                 </div>
             </div>

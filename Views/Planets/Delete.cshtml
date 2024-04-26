@@ -1,0 +1,81 @@
+﻿@model HumanDesign.Models.Planet
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete Planet</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <style>
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+            .details-table th, .details-table td {
+                border: 1px solid #dee2e6;
+                padding: 0.75rem;
+                vertical-align: top;
+                line-height: 1.6;
+                text-align: left;
+            }
+
+            .details-table th {
+                width: 20%;
+                background-color: #f8f9fa;
+                font-weight: bold;
+            }
+    </style>
+    <h4>Planet</h4>
+    <hr />
+    <table class="table details-table">
+        <tbody>
+            <tr>
+                <td>Name</td>
+                <td>@Html.DisplayFor(model => model.Name)</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>@Html.DisplayFor(model => model.Description)</td>
+            </tr>
+            <tr>
+                <td>Main Theme</td>
+                <td>@Html.DisplayFor(model => model.MainTheme)</td>
+            </tr>
+            <tr>
+                <td>Concious</td>
+                <td>@Html.DisplayFor(model => model.Concious)</td>
+            </tr>
+            <tr>
+                <td>Unconcious</td>
+                <td>@Html.DisplayFor(model => model.Unconcious)</td>
+            </tr>
+            <tr>
+                <td>Pearl Sequence</td>
+                <td>@Html.DisplayFor(model => model.PearlSequence)</td>
+            </tr>
+            <tr>
+                <td>Role In Pearl Sequence</td>
+                <td>@Html.DisplayFor(model => model.RoleInPearlSequence)</td>
+            </tr>
+            <tr>
+                <td>Note</td>
+                <td>@Html.DisplayFor(model => model.Note)</td>
+            </tr>
+        </tbody>
+    </table>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id"/>
+        <div class="d-flex align-items-center" style="margin-top: 10px;">
+            <div class="form-group me-2">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </div>
+            <div>
+                <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>

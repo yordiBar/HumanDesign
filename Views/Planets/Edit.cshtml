@@ -1,0 +1,70 @@
+﻿@model HumanDesign.Models.Planet
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Planet</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MainTheme" class="control-label"></label>
+                <input asp-for="MainTheme" class="form-control" />
+                <span asp-validation-for="MainTheme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Concious" class="control-label"></label>
+                <input asp-for="Concious" class="form-control" />
+                <span asp-validation-for="Concious" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Unconcious" class="control-label"></label>
+                <input asp-for="Unconcious" class="form-control" />
+                <span asp-validation-for="Unconcious" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PearlSequence" class="control-label"></label>
+                <input asp-for="PearlSequence" class="form-control" />
+                <span asp-validation-for="PearlSequence" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleInPearlSequence" class="control-label"></label>
+                <input asp-for="RoleInPearlSequence" class="form-control" />
+                <span asp-validation-for="RoleInPearlSequence" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note" class="control-label"></label>
+                <input asp-for="Note" class="form-control" />
+                <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+            <div class="d-flex align-items-center" style="margin-top: 10px;">
+                <div class="form-group me-2">
+                    <input type="submit" value="Save" class="btn btn-success" />
+                </div>
+                <div>
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

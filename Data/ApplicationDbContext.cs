@@ -24,6 +24,7 @@ namespace HumanDesign.Data
         public DbSet<ProfileLine> ProfileLine { get; set; }
         public DbSet<Channel> Channels { get; set; }
         public DbSet<CircuitChannel> CircuitChannels { get; set; }
+        public DbSet<Planet> Planets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
