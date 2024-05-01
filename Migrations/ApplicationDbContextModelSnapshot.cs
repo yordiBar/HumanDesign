@@ -182,6 +182,62 @@ namespace HumanDesign.Migrations
                     b.ToTable("CircuitChannels");
                 });
 
+            modelBuilder.Entity("HumanDesign.Models.CognitionVariable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CognitionVariables");
+                });
+
+            modelBuilder.Entity("HumanDesign.Models.DeterminationDigestionVariable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LeftFacing")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RightFacing")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DeterminationDigestionVariables");
+                });
+
             modelBuilder.Entity("HumanDesign.Models.EnergyType", b =>
                 {
                     b.Property<int>("Id")
@@ -205,6 +261,37 @@ namespace HumanDesign.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("EnergyType");
+                });
+
+            modelBuilder.Entity("HumanDesign.Models.EnvironmentVariable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LeftFacing")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RightFacing")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EnvironmentVariables");
                 });
 
             modelBuilder.Entity("HumanDesign.Models.Gate", b =>
@@ -327,6 +414,74 @@ namespace HumanDesign.Migrations
                     b.ToTable("Locations");
                 });
 
+            modelBuilder.Entity("HumanDesign.Models.MotivationVariable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LeftFacing")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RightFacing")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TransferredMotivation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MotivationVariables");
+                });
+
+            modelBuilder.Entity("HumanDesign.Models.PerspectiveVariable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LeftFacing")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RightFacing")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TransferredPerspective")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PerspectiveVariables");
+                });
+
             modelBuilder.Entity("HumanDesign.Models.Planet", b =>
                 {
                     b.Property<int>("Id")
@@ -430,6 +585,31 @@ namespace HumanDesign.Migrations
                     b.ToTable("Repressives");
                 });
 
+            modelBuilder.Entity("HumanDesign.Models.SenseVariable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SenseVariables");
+                });
+
             modelBuilder.Entity("HumanDesign.Models.Shadow", b =>
                 {
                     b.Property<int>("Id")
@@ -466,6 +646,60 @@ namespace HumanDesign.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Siddhis");
+                });
+
+            modelBuilder.Entity("HumanDesign.Models.TrajectoryVariable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TrajectoryVariables");
+                });
+
+            modelBuilder.Entity("HumanDesign.Models.Variable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tips")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Variables");
                 });
 
             modelBuilder.Entity("HumanDesign.Models.Channel", b =>

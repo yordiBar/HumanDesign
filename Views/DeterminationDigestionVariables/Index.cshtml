@@ -1,0 +1,74 @@
+﻿@model IEnumerable<HumanDesign.Models.DeterminationDigestionVariable>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Determination/Digestion</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="border-right: 1px solid #ddd;">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th style="border-right: 1px solid #ddd;">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th style="border-right: 1px solid #ddd;">
+                Left Facing
+            </th>
+            <th style="border-right: 1px solid #ddd;">
+                Right Facing
+            </th>
+            <th style="border-right: 1px solid #ddd;">
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th style="border-right: 1px solid #ddd;">
+                @Html.DisplayNameFor(model => model.Tips)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="border-right: 1px solid #ddd;">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td style="border-right: 1px solid #ddd;">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td style="border-right: 1px solid #ddd;">
+                    @Html.DisplayFor(modelItem => item.LeftFacing)
+                </td>
+                <td style="border-right: 1px solid #ddd;">
+                    @Html.DisplayFor(modelItem => item.RightFacing)
+                </td>
+                <td style="border-right: 1px solid #ddd;">
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+                <td style="border-right: 1px solid #ddd;">
+                    @Html.DisplayFor(modelItem => item.Tips)
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="form-group me-2">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a>
+                        </div>
+                        <div class="form-group me-2">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Details</a>
+                        </div>
+                        <div class="form-group">
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

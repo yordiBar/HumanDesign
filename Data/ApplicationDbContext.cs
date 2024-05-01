@@ -26,7 +26,15 @@ namespace HumanDesign.Data
         public DbSet<CircuitChannel> CircuitChannels { get; set; }
         public DbSet<Planet> Planets { get; set; }
         public DbSet<IncarnationCross> IncarnationCrosses { get; set; }
-
+        public DbSet<Variable> Variables { get; set; }
+        public DbSet<DeterminationDigestionVariable> DeterminationDigestionVariables { get; set; }
+        public DbSet<EnvironmentVariable> EnvironmentVariables { get; set; }
+        public DbSet<CognitionVariable> CognitionVariables { get; set; }
+        public DbSet<MotivationVariable> MotivationVariables { get; set; }
+        public DbSet<SenseVariable> SenseVariables { get; set; }
+        public DbSet<PerspectiveVariable> PerspectiveVariables { get; set; }
+        public DbSet<TrajectoryVariable> TrajectoryVariables { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CircuitChannel>()

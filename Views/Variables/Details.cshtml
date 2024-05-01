@@ -1,0 +1,73 @@
+﻿@model HumanDesign.Models.Variable
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+@if (Model != null)
+{
+<style>
+    .details-table {
+        width: 100%;
+        border-collapse: collapse; /* Collapses border so there's no space between them */
+        table-layout: fixed; /* Helps to keep columns width consistent */
+    }
+
+        .details-table th, .details-table td {
+            border: 1px solid #dee2e6; /* Sets the border color and style */
+            padding: 0.75rem; /* Matches the padding from the 'Gate' table */
+            vertical-align: top; /* Aligns content to the top of the cell */
+            line-height: 1.6; /* Adjusts the line height to match the 'Gate' table */
+            text-align: left; /* Aligns text to the left */
+        }
+
+        .details-table th {
+            width: 20%; /* Sets the width of the 'Features' column to match the 'Gate' table */
+            background-color: #f8f9fa; /* Matches the background color from the 'Gate' table */
+            font-weight: bold; /* Makes the 'Features' header bold */
+        }
+</style>
+
+<div>
+    <h4>Variable</h4>
+    <hr />
+    <table class="table details-table">
+        <thead>
+            <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Name)</td>
+                <td>@Html.DisplayFor(model => model.Name)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Description)</td>
+                <td>@Html.DisplayFor(model => model.Description)</td>
+            </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Note)</td>
+                    <td>@Html.DisplayFor(model => model.Note)</td>
+                </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Tips)</td>
+                <td>@Html.DisplayFor(model => model.Tips)</td>
+            </tr>            
+        </tbody>
+    </table>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+}
+else
+{
+<div>
+    <p>Variable not found.</p>
+</div>
+}

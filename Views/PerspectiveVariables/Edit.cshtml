@@ -1,0 +1,67 @@
+﻿@model HumanDesign.Models.PerspectiveVariable
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Perspective</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Transferred Perspective
+                <input asp-for="TransferredPerspective" class="form-control" />
+                <span asp-validation-for="TransferredPerspective" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Left Facing
+                <input asp-for="LeftFacing" class="form-control" />
+                <span asp-validation-for="LeftFacing" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Right Facing
+                <input asp-for="RightFacing" class="form-control" />
+                <span asp-validation-for="RightFacing" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note" class="control-label"></label>
+                <input asp-for="Note" class="form-control" />
+                <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tips" class="control-label"></label>
+                <input asp-for="Tips" class="form-control" />
+                <span asp-validation-for="Tips" class="text-danger"></span>
+            </div>
+            <div class="d-flex align-items-center" style="margin-top: 10px;">
+                <div class="form-group me-2">
+                    <input type="submit" value="Save" class="btn btn-success" />
+                </div>
+                <div>
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
